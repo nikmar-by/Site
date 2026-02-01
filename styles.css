@@ -86,6 +86,7 @@ img {
 }
 .logo-text {
   font-weight: 600;
+  font-size: 22px; 
 }
 .main-nav {
   display: flex;
@@ -377,8 +378,8 @@ textarea {
 /* Responsive */
 
 @media (max-width: 768px) {
-  .main-nav {
-    display: none;
+ .logo-text {
+    font-size: 18px; /* Меньше на мобильных, как у вашего logo-img */
   }
 
   .mobile-menu-btn {
@@ -395,6 +396,7 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
