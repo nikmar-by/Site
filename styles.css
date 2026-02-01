@@ -87,11 +87,15 @@ img {
 
 .logo-text {
   font-weight: 600;
-  }
+  /* Удалите text-transform: uppercase; */
+}
 
 .logo-text .red-letter {
-  color: #FF0000; /* Только M и P из Ping */
+  color: #FF0000;
+  text-transform: uppercase; /* Только красные M и P — uppercase */
+  font-weight: 700; /* Усилить жирность для выделения */
 }
+
 
 
 .main-nav {
@@ -402,5 +406,6 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
 
 
