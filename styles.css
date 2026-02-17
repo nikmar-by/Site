@@ -526,8 +526,6 @@ textarea {
 
 /* Footer */
 
-/* Footer */
-
 .site-footer {
   background: #0f172a;
   color: #e5e7eb;
@@ -538,9 +536,10 @@ textarea {
 .footer-inner {
   display: grid;
   /* 
-     1-я: auto (по ширине логотипа)
-     2-я и 3-я: 1fr (делят остаток поровну)
-     4-я: max-content (по ширине текста без переносов)
+     1-я: auto (логотип)
+     2-я: 1fr (половина остатка)
+     3-я: 1fr (вторая половина остатка)
+     4-я: max-content (ширина по тексту)
   */
   grid-template-columns: auto 1fr 1fr max-content;
   gap: 32px;
@@ -548,7 +547,9 @@ textarea {
   align-items: start;
 }
 
-/* 2. Запрет переноса строк для ссылок в последней колонке */
+/* 2. Запрет переноса строк для контактов (3-я колонка) и навигации (4-я) */
+.footer-inner > .footer-col:nth-child(3) p,
+.footer-inner > .footer-col:nth-child(3) a,
 .footer-inner > .footer-col:last-child a {
   white-space: nowrap;
 }
