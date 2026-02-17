@@ -530,7 +530,7 @@ textarea {
   background: #0f172a;
   color: #e5e7eb;
   margin-top: 40px;
-  padding-top: 0; /* Убираем лишний отступ сверху */
+  padding-top: 0;
 }
 
 /* 1. Основная сетка футера (Desktop) - Компактная */
@@ -543,19 +543,19 @@ textarea {
      4-я: max-content (ширина по тексту)
   */
   grid-template-columns: auto 1fr 1fr max-content;
-  gap: 24px; /* Уменьшили расстояние между колонками (было 32px) */
-  padding: 32px 16px 16px; /* Компактные отступы: 32px сверху, 16px снизу */
+  gap: 24px;
+  /* ВАЖНО: Убрали padding-bottom, чтобы подтянуть копирайт */
+  padding: 32px 16px 8px; 
   align-items: start;
 }
 
-/* Запрет переноса строк для контактов и навигации */
+/* Запрет переноса строк */
 .footer-inner > .footer-col:nth-child(3) p,
 .footer-inner > .footer-col:nth-child(3) a,
 .footer-inner > .footer-col:last-child a {
   white-space: nowrap;
 }
 
-/* Дополнительно для телефонов (если в HTML есть класс .no-wrap) */
 .no-wrap {
   white-space: nowrap !important;
 }
@@ -565,35 +565,34 @@ textarea {
 }
 
 .footer-logo {
-  margin-bottom: 12px; /* Уменьшили (было 16px) */
+  margin-bottom: 12px;
 }
 
-/* Логотип по умолчанию (Desktop) */
 .footer-logo-img {
   display: block;
   width: 100%;
-  max-width: 160px; /* Чуть компактнее (было 180px) */
+  max-width: 160px;
   height: auto;
 }
 
 .footer-title {
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 12px; /* Уменьшили (было 16px) */
+  margin-bottom: 10px;
   color: #fff;
 }
 
 .footer-text {
-  line-height: 1.5; /* Чуть плотнее (было 1.6) */
+  line-height: 1.5;
   margin: 0;
   color: #9ca3af;
-  font-size: 13px; /* Чуть меньше шрифт (было 14px) */
+  font-size: 13px;
 }
 
-/* Ссылки в футере */
+/* Ссылки */
 .footer-col a {
   display: block;
-  margin-bottom: 6px; /* Уменьшили (было 8px) */
+  margin-bottom: 6px;
   color: #9ca3af;
   text-decoration: none;
   transition: color 0.2s;
@@ -604,72 +603,69 @@ textarea {
   color: #fff;
 }
 
-/* Специфично для контактов (inline ссылки внутри P) */
 .footer-col p a {
   display: inline; 
 }
 
-/* Контакты */
 .footer-col p {
-  margin: 0 0 8px; /* Уменьшили (было 12px) */
+  margin: 0 0 8px;
   color: #9ca3af;
   font-size: 14px;
 }
 
-/* Нижняя полоса с копирайтом - Компактная */
+/* Нижняя полоса с копирайтом - СУПЕР КОМПАКТНАЯ */
 .footer-bottom {
   border-top: 1px solid #1f2937;
-  padding: 16px 0; /* Уменьшили (было 24px) */
+  padding: 12px 0; /* Минимальные отступы внутри */
   font-size: 12px;
   color: #6b7280;
   text-align: center;
-  margin-top: 16px; /* Уменьшили отступ от колонок */
+  margin-top: 0; /* ВАЖНО: Убрали внешний отступ, приклеили к колонкам */
 }
 
 .footer-bottom p {
-  margin: 0; /* Убираем отступы у параграфа */
+  margin: 0;
 }
 
 /* --- Responsive (Адаптивность) --- */
 
-/* Планшеты (до 992px) - перестраиваем в 2 колонки */
+/* Планшеты (до 992px) */
 @media (max-width: 992px) {
   .footer-inner {
-    grid-template-columns: 1fr 1fr; /* 2 равные колонки */
-    gap: 32px 20px; /* Компактные отступы */
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 20px;
   }
 }
 
-/* Планшеты и мобильные (до 768px) - общие стили адаптации */
+/* Мобильные и планшеты (до 768px) */
 @media (max-width: 768px) {
   .main-nav { display: none; }
   .mobile-menu-btn { display: block; }
   .hero-inner, .case-card, .contact-grid { grid-template-columns: 1fr; }
-  
-  /* Уменьшаем логотип на планшетах */
   .footer-logo-img { max-width: 130px; }
 }
 
-/* Смартфоны (до 480px) - одна колонка и лого во всю ширину */
+/* Смартфоны (до 480px) */
 @media (max-width: 480px) {
-  /* Отключаем padding у контейнера для Full Bleed логотипа */
+  /* Убираем padding у контейнера для Full Bleed логотипа */
   .site-footer .container {
       padding-left: 0;
       padding-right: 0;
   }
 
-  /* Возвращаем padding для контента внутри колонок (кроме логотипа) */
+  /* Возвращаем padding колонкам с текстом */
   .footer-col:not(:first-child) {
       padding-left: 16px;
       padding-right: 16px;
   }
 
   .footer-inner {
-    grid-template-columns: 1fr; /* 1 колонка */
+    grid-template-columns: 1fr;
     gap: 24px;
     display: flex;
     flex-direction: column;
-    padding-top: 0; /* Убираем верхний отступ у сетки, так как он есть у логотипа */
+    padding-top: 0;
+    padding-bottom: 16px; /* Чуть больше места перед копирайтом на мобильных */
   }
 
   /* Full Bleed Логотип */
