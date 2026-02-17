@@ -534,14 +534,23 @@ textarea {
   margin-top: 40px;
 }
 
-/* Основная сетка футера (Desktop: 4 колонки) */
+/* 1. Основная сетка футера (Desktop) */
 .footer-inner {
   display: grid;
-  /* Лого(1) Описание(1.5) Контакты(1) Навигация(0.8) */
- grid-template-columns: repeat(4, 1fr);
+  /* 
+     1-я: auto (по ширине логотипа)
+     2-я и 3-я: 1fr (делят остаток поровну)
+     4-я: max-content (по ширине текста без переносов)
+  */
+  grid-template-columns: auto 1fr 1fr max-content;
   gap: 32px;
   padding: 48px 16px;
   align-items: start;
+}
+
+/* 2. Запрет переноса строк для ссылок в последней колонке */
+.footer-inner > .footer-col:last-child a {
+  white-space: nowrap;
 }
 
 .footer-col {
@@ -606,7 +615,7 @@ textarea {
 /* Планшеты (до 992px) - перестраиваем в 2 колонки */
 @media (max-width: 992px) {
   .footer-inner {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* 2 равные колонки */
     gap: 40px 24px;
   }
 }
@@ -636,11 +645,11 @@ textarea {
 /* Смартфоны (до 480px) - одна колонка и лого во всю ширину */
 @media (max-width: 480px) {
   .footer-inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 колонка */
     gap: 32px;
     padding-left: 16px;
     padding-right: 16px;
-    overflow-x: hidden; /* Скрываем горизонт. прокрутку от логотипа */
+    overflow-x: hidden;
   }
 
   /* Full Bleed эффект для логотипа */
@@ -658,4 +667,3 @@ textarea {
     padding: 0;
   }
 }
-
