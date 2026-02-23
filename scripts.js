@@ -59,20 +59,20 @@ document.querySelectorAll('.faq-question').forEach(button => {
 const backToTopButton = document.getElementById('backToTop');
 
 if (backToTopButton) {
-window.addEventListener('scroll', () => {
-  if (window.pageYOffset > 300) {
-    backToTopButton.style.display = 'block';
-  } else {
-    backToTopButton.style.display = 'none';
-  }
-});
-
-backToTopButton.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.style.display = 'block';
+    } else {
+      backToTopButton.style.display = 'none';
+    }
   });
-});
+
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 }
 
 // Обработка формы
@@ -80,61 +80,80 @@ const contactForm = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 
 if (contactForm) {
-contactForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  // Показать состояние загрузки
-  submitBtn.classList.add('loading');
-  submitBtn.disabled = true;
-  
-  // Здесь будет отправка формы через Netlify Forms
-  // После отправки:
-  // 1. Скрыть спиннер
-  // 2. Показать сообщение об успехе или ошибке
-  // 3. Очистить форму при успехе
-  
-  // Эмуляция отправки
-  setTimeout(() => {
-    submitBtn.classList.remove('loading');
-    submitBtn.disabled = false;
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
     
-    // Показать сообщение об успехе
-    const formMessage = document.getElementById('formMessage');
-    formMessage.textContent = 'Спасибо! Ваша заявка успешно отправлена.';
-    formMessage.className = 'form-message success';
-    formMessage.style.display = 'block';
+    // Показать состояние загрузки
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
     
-    // Очистить форму
-    contactForm.reset();
-    
-    // Скрыть сообщение через 5 секунд
+    // Эмуляция отправки
     setTimeout(() => {
-      formMessage.style.display = 'none';
-    }, 5000);
-  }, 2000);
-});
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+      
+      // Показать сообщение об успехе
+      const formMessage = document.getElementById('formMessage');
+      formMessage.textContent = 'Спасибо! Ваша заявка успешно отправлена.';
+      formMessage.className = 'form-message success';
+      formMessage.style.display = 'block';
+      
+      // Очистить форму
+      contactForm.reset();
+      
+      // Скрыть сообщение через 5 секунд
+      setTimeout(() => {
+        formMessage.style.display = 'none';
+      }, 5000);
+    }, 2000);
+  });
 
-// Валидация полей в реальном времени
-const inputs = contactForm.querySelectorAll('input[required], select[required]');
-inputs.forEach(input => {
-  input.addEventListener('blur', validateField);
-});
+  // Валидация полей в реальном времени
+  const inputs = contactForm.querySelectorAll('input[required], select[required]');
+  inputs.forEach(input => {
+    input.addEventListener('blur', validateField);
+  });
 }
 
 function validateField(e) {
-const field = e.target;
-const group = field.closest('.form-group');
-const feedback = group.querySelector('.form-feedback');
+  const field = e.target;
+  const group = field.closest('.form-group');
+  const feedback = group.querySelector('.form-feedback');
 
-if (field.value.trim() === '') {
-  group.classList.remove('success');
-  group.classList.add('error');
-  feedback.textContent = 'Это поле обязательно для заполнения';
-  feedback.className = 'form-feedback error';
-} else {
-  group.classList.remove('error');
-  group.classList.add('success');
-  feedback.textContent = '✓';
-  feedback.className = 'form-feedback success';
+  if (field.value.trim() === '') {
+    group.classList.remove('success');
+    group.classList.add('error');
+    feedback.textContent = 'Это поле обязательно для заполнения';
+    feedback.className = 'form-feedback error';
+  } else {
+    group.classList.remove('error');
+    group.classList.add('success');
+    feedback.textContent = '✓';
+    feedback.className = 'form-feedback success';
+  }
 }
+
+// ==========================================
+// Скрипт-ускоритель для Telegram
+// ==========================================
+const fastTgLink = document.getElementById('fast-tg-link');
+
+if (fastTgLink) {
+  fastTgLink.addEventListener('click', function(e) {
+    e.preventDefault(); // Останавливаем стандартный переход
+    
+    // Сохраняем вашу ссылку из HTML (вместе с ?direct)
+    const fallbackUrl = this.href; 
+    
+    // 1. Моментально пытаемся открыть приложение
+    window.location.href = 'tg://resolve?domain=mapping_by';
+    
+    // 2. Ждем 500 миллисекунд. Если браузер остался активным (не свернулся) — 
+    // открываем вашу ссылку из href в новой вкладке
+    setTimeout(function() {
+      if (!document.hidden) {
+        window.open(fallbackUrl, '_blank');
+      }
+    }, 500);
+  });
 }
