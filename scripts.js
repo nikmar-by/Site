@@ -146,7 +146,7 @@ if (fastTgLink) {
     const fallbackUrl = this.href; 
     
     // 1. Моментально пытаемся открыть приложение
-    window.location.href = 'tg://resolve?domain=mapping_by';
+    window.location.href = 'tg://resolve?domain=mapping_by&direct';
     
     // 2. Ждем 500 миллисекунд. Если браузер остался активным (не свернулся) — 
     // открываем вашу ссылку из href в новой вкладке
@@ -157,3 +157,4 @@ if (fastTgLink) {
     }, 500);
   });
 }
+
