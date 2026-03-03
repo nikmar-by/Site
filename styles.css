@@ -562,10 +562,12 @@ textarea {
   line-height: 1.5;
   margin: 0;
   color: #9ca3af;
-  font-size: 13px;
+  font-size: 14px;
 }
 
-.footer-col a {
+/* Все ссылки и текстовые элементы в колонках футера — одинаковый интервал */
+.footer-col a,
+.footer-col span {
   display: block;
   margin-bottom: 8px;
   color: #9ca3af;
@@ -576,26 +578,7 @@ textarea {
 
 .footer-col a:hover {
   color: #fff;
-}
-
-.footer-col p a {
-  display: inline;
-}
-
-.footer-col p {
-  margin: 0 0 8px;
-  color: #9ca3af;
-  font-size: 14px;
-}
-
-.footer-inner > .footer-col:nth-child(3) p,
-.footer-inner > .footer-col:nth-child(3) a,
-.footer-inner > .footer-col:last-child a {
-  white-space: nowrap;
-}
-
-.no-wrap {
-  white-space: nowrap !important;
+  text-decoration: none;
 }
 
 /* Два подстолбца в навигации футера */
@@ -603,6 +586,10 @@ textarea {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0 80px;
+}
+
+.no-wrap {
+  white-space: nowrap !important;
 }
 
 .footer-bottom {
