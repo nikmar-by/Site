@@ -554,6 +554,10 @@ textarea {
   min-width: 0;
 }
 
+.footer-col p {
+  margin: 0;
+}
+
 .footer-logo {
   margin: 0;
   padding: 0;
