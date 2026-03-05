@@ -570,7 +570,7 @@ textarea {
 .footer-col a,
 .footer-col span {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: #9ca3af;
   text-decoration: none;
   transition: color 0.2s;
@@ -680,6 +680,7 @@ textarea {
     margin: 0;
   }
 }
+
 
 
 
