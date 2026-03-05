@@ -297,6 +297,16 @@ h3 {
   color: var(--text-muted);
 }
 
+.hero-image {
+  width: 100%;
+}
+
+.hero-image img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+}
+
 /* Cards, grid */
 .grid-3 {
   display: grid;
@@ -647,6 +657,10 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  .hero-image img {
+    max-height: 260px;
+  }
+
   .footer-logo-img {
     max-width: 130px;
   }
@@ -685,10 +699,3 @@ textarea {
     margin: 0;
   }
 }
-
-
-
-
-
-
-
