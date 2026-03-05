@@ -277,7 +277,7 @@ h3 {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 32px;
-  align-items: center;
+  align-items: start;
 }
 
 .hero-subtitle {
@@ -685,6 +685,7 @@ textarea {
     margin: 0;
   }
 }
+
 
 
 
