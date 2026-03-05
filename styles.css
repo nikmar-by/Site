@@ -199,6 +199,12 @@ h3 {
   align-items: center;
   gap: 8px;
   color: var(--text-main);
+  text-decoration: none;
+}
+
+.logo:hover,
+.logo:hover .logo-text {
+  text-decoration: none;
 }
 
 .logo-img {
@@ -566,7 +572,6 @@ textarea {
   font-size: 14px;
 }
 
-/* Все ссылки и текстовые элементы в колонках футера — одинаковый интервал */
 .footer-col a,
 .footer-col span {
   display: block;
@@ -680,12 +685,3 @@ textarea {
     margin: 0;
   }
 }
-
-
-
-
-
-
-
-
-
